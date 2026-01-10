@@ -1,5 +1,5 @@
-import { cookies, headers } from "next/headers";
-import { apiFetch } from "./api";
+import { headers } from "next/headers";
+import { API_BASE } from "./api";
 
 export type AuthUser = {
   id: string;
@@ -14,7 +14,7 @@ export async function getAuthUser() {
   if (!cookieHeader) {
     return null;
   }
-  const res = await fetch("http://localhost:3000/auth/me", {
+  const res = await fetch(`${API_BASE}/auth/me`, {
     headers: { cookie: cookieHeader },
     cache: "no-store",
   });

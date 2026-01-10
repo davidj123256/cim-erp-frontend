@@ -2,7 +2,7 @@
 // automatically attempts to refresh the session on 401 responses
 
 // For protected routes, use apiFetch instead of fetch
-export const API_BASE = 'http://localhost:3000';
+export const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 export async function apiFetch(
   input: RequestInfo,
@@ -16,7 +16,7 @@ export async function apiFetch(
   if (res.status === 401) {
     // try refresh
     const refreshRes = await fetch(
-      "http://localhost:3000/auth/refresh-token",
+      `${API_BASE}/auth/refresh-token`,
       {
         method: "POST",
         credentials: "include",

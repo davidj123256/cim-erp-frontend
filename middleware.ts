@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { API_BASE } from "./lib/api";
 
 export async function middleware(req: NextRequest) {
   const cookieHeader = req.headers.get("cookie") ?? "";
 
   // 1. Check session
-  const meRes = await fetch("http://localhost:3000/auth/me", {
+  const meRes = await fetch(`${API_BASE}/auth/me`, {
     headers: {
       cookie: cookieHeader,
     },
@@ -13,7 +14,7 @@ export async function middleware(req: NextRequest) {
 
   //   2. If not authenticated, attempt refresh token
   if (meRes.status === 401) {
-    const refreshRes = await fetch("http://localhost:3000/auth/refresh-token", {
+    const refreshRes = await fetch(`${API_BASE}/auth/refresh-token`, {
       method: "POST",
       headers: {
         cookie: cookieHeader, // forward cookies again
