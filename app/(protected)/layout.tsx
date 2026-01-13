@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { Sidebar } from "./components/Sidebar";
-import { getAuthUser } from "@/lib/auth";
+import { getAuthUser } from "@/lib/auth.server";
 
 export default async function ProtectedLayout({
   children,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoutButton } from "./LogoutButton";
 
 export function Sidebar() {
   return (
@@ -14,6 +15,7 @@ export function Sidebar() {
         <Link href="/crm" className="block hover:underline">
           CRM
         </Link>
+        <LogoutButton />
       </nav>
     </aside>
   );

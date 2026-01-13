@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { API_BASE } from "./api";
+import { API_BASE, apiFetch } from "./api";
 
 export type AuthUser = {
   id: string;
